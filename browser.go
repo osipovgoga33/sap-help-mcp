@@ -74,7 +74,7 @@ const toText = (html) => {
   s = s.replace(/<a\b[^>]*href\s*=\s*"(https?:[^"]+)"[^>]*>([\s\S]*?)<\/a\s*>/gi, (m, h, t) => { t = t.replace(/<[^>]+>/g, '').trim(); return t ? '[' + t + '](' + h + ')' : h; });
   s = s.replace(/<br\s*\/?>/gi, '\n').replace(/<li\b[^>]*>/gi, '\n- ').replace(/<\/(p|div|li|h[1-6]|tr|ul|ol|table|blockquote)\s*>/gi, '\n').replace(/<(p|div|h[1-6]|tr|ul|ol|table|blockquote)\b[^>]*>/gi, '\n');
   s = decode(s.replace(/<[^>]+>/g, ''));
-  return s.split('\n').map(l => l.replace(/[ \t ]+/g, ' ').trim()).join('\n').replace(/\n{3,}/g, '\n\n').trim();
+  return s.split('\n').map(l => l.replace(/[ \t\xa0]+/g, ' ').trim()).join('\n').replace(/\n{3,}/g, '\n\n').trim();
 };
 `
 
