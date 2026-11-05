@@ -1,0 +1,5 @@
+dist/
+/sap-help
+/sap-help.exe
+*.local*
+.env
