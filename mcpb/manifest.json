@@ -1,0 +1,42 @@
+{
+  "manifest_version": "0.3",
+  "name": "sap-help",
+  "display_name": "SAP Help (Go)",
+  "version": "0.2.1",
+  "description": "Search and read help.sap.com and SAP Community live. One read-only tool, no credentials.",
+  "long_description": "A single self-contained Go binary, no runtime to install. One tool, sap_help, with actions search, read, community_search, community_read and status. Only anonymous GET requests to public portal endpoints; responses are cached in memory for six hours.",
+  "author": {
+    "name": "Georgy Osipov",
+    "url": "https://github.com/osipovgoga33"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/osipovgoga33/sap-help-mcp"
+  },
+  "homepage": "https://github.com/osipovgoga33/sap-help-mcp",
+  "server": {
+    "type": "binary",
+    "entry_point": "server/run.sh",
+    "mcp_config": {
+      "command": "/bin/sh",
+      "args": ["${__dirname}/server/run.sh"],
+      "platform_overrides": {
+        "win32": {
+          "command": "${__dirname}/server/sap-help.exe",
+          "args": []
+        }
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "sap_help",
+      "description": "Search and read help.sap.com and SAP Community (actions: search, read, community_search, community_read, status)"
+    }
+  ],
+  "keywords": ["sap", "s4hana", "abap", "documentation", "search"],
+  "license": "MIT",
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"]
+  }
+}
